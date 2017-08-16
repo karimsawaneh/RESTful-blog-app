@@ -68,6 +68,16 @@ app.get('/blogs/:id', function(req, res){
     });
 });
 
+// EDIT Route
+app.get('/blogs/:id/edit', function(req, res){
+    Blog.findById(req.params.id, function(err, foundBlog){
+        if(err){
+            res.redirect('/blogs');
+        } else {
+            res.render('edit', {blog: foundBlog});
+        }
+    });
+});
 
 // set app to listen for requests
 app.listen(process.env.port || 4000, function () {
