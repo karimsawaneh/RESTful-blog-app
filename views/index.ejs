@@ -1,12 +1,15 @@
 <% include ./partials/header %>
+
 <h1>INDEX PAGE!!</h1>
 
 <% blogs.forEach(function(blog){ %>
     <div>
         <h2><%= blog.title %></h2>
-        <img src=" <%= blog.image %>" alt="Test Post" >
+        <img src=" <%= blog.image %> " alt="Test Post" >
         <span><%= blog.date %></span>
-        <p><% blog.body %></p>
+        <p><%= blog.body %></p>
+        <!-- shows single item -->
+        <a href="/blogs/<%= blog._id %>">Read More</a>
     </div>
 <% }) %>
 

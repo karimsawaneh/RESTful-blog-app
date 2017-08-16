@@ -1,0 +1,18 @@
+<% include ./partials/header %>
+
+    <div class="ui main text container segment">
+        <div class="ui huge header"><%= blog.title %></div>
+        <div class="ui top attached">
+            <div class="item">
+                <img class="ui centered rounbded image" src=" <%= blog.image %>" alt="Test Post">
+                <div class="content">
+                    <span><%= blog.date.toDateString() %></span>
+                </div>
+                <div class="description">
+                    <p><%= blog.body %></p>
+                </div>
+            </div>    
+        </div>"
+    </div>
+
+    <% include ./partials/footer %>

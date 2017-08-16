@@ -7,7 +7,6 @@ var express = require('express'),
 mongoose.connect('mongodb://localhost/restful_blog_app', {
     useMongoClient: true,
 });
-mongoose.Promise = global.Promise;
 
 // app config/ set view engine and static path and bodyparser
 app.set('view engine', 'ejs');
@@ -40,7 +39,34 @@ app.get('/blogs', function(req, res){
     });
 });
 
+// New Post Route
+app.get('/blogs/new', function(req, res){
+    res.render('new');
+});
 
+// Create Post route
+app.post('/blogs', function(req, res){
+    //create blog
+    Blog.create(req.body.blog, function(err, newBlog){
+        if(err){
+            res.render('new');
+            //if successful send to index
+        } else {
+            res.redirect('/blogs');
+        }
+    });
+});
+
+// show route
+app.get('/blogs/:id', function(req, res){
+    Blog.findById(req.params.id, function(err, foundBlog){
+        if(err) {
+            res.redirect('/blogs');
+        } else {
+            res.render('show', {blog: foundBlog});
+        }
+    });
+});
 
 
 // set app to listen for requests
