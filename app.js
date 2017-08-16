@@ -44,7 +44,7 @@ app.get('/blogs', function(req, res){
 
 
 // set app to listen for requests
-app.listen(process.env.port || 3000, function () {
-    console.log('Server started on port 3000...');
+app.listen(process.env.port || 4000, function () {
+    console.log('Server started on port 4000...');
 });
 
